@@ -1,0 +1,34 @@
+//COMPILEA  JOB 999TCD0,                                                00001006
+//             '* COMPILE/LINK',                                        00002006
+//             NOTIFY=&SYSUID,CLASS=A,                                  00003006
+//             MSGLEVEL=(1,1)                                           00004000
+//*****************************************************                 00004108
+//*            CHANGE <IBMUSER> INTO THE PREFIX YOU                     00004208
+//*            USED WHEN CLONING THIS REPO WITH ZIGI                    00004308
+//*****************************************************                 00004408
+//ASM EXEC PGM=ASMA90,REGION=1024K,PARM='NODECK,OBJECT'                 00005000
+//SYSPRINT DD SYSOUT=*                                                  00006000
+//SYSLIB DD DSN=SYS1.MACLIB,DISP=SHR                                    00007000
+//       DD DSN=SYS1.MODGEN,DISP=SHR                                    00008000
+//       DD DSN=SYS1.SISTMAC1,DISP=SHR                                  00009000
+//       DD DSN=IBMUSER.RACHK.SRCE,DISP=SHR                             00009107
+//SYSUT1 DD UNIT=3390,SPACE=(CYL,(20,5))                                00010000
+//SYSUT2 DD UNIT=3390,SPACE=(CYL,(10,1))                                00020000
+//SYSUT3 DD UNIT=3390,SPACE=(CYL,(2,1))                                 00030000
+//SYSUT4 DD UNIT=3390,SPACE=(CYL,(2,1))                                 00040000
+//SYSUT5 DD UNIT=3390,SPACE=(CYL,(2,1)),DCB=SYS1.MACLIB,                00050000
+// DISP=(,PASS)                                                         00060000
+//SYSLIN DD DSN=&&OBJ(RACHK),DISP=(,PASS),                              00070000
+// SPACE=(CYL,(1,1,1)),UNIT=3390,                                       00080000
+// DCB=(BLKSIZE=6160,LRECL=80,RECFM=FB,BUFNO=1)                         00090000
+//SYSIN DD DSN=IBMUSER.RACHK.SRCE(RACHK),DISP=SHR                       00100007
+//*                                                                     00110000
+//LKED EXEC PGM=HEWLH096,COND=(0,LT),                                   00120000
+// PARM=('SIZE=(1000K,100K),NCAL,XREF,LET,LIST')                        00130000
+//SYSPRINT DD SYSOUT=*                                                  00140000
+//SYSLMOD DD DSN=IBMUSER.RACHK.LOAD,DISP=SHR                            00150007
+//SYSUT1 DD UNIT=3390,SPACE=(6160,(230,760))                            00160000
+//OBJECT DD DSN=*.ASM.SYSLIN,VOL=REF=*.ASM.SYSLIN,DISP=SHR              00170000
+//SYSLIN DD *                                                           00180000
+    INCLUDE OBJECT(RACHK)                                               00200004
+    NAME RACHK(R)                                                       00210005

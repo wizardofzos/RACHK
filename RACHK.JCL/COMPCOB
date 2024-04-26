@@ -1,0 +1,17 @@
+//IBMUSERA  JOB 999TCD0,                                                00001005
+//             'COMPILE COBOL',                                         00002005
+//             NOTIFY=&SYSUID,CLASS=A,                                  00003005
+//             MSGLEVEL=(1,1)                                           00004002
+//*****************************************************                 00005007
+//*            CHANGE <IBMUSER> INTO THE PREFIX YOU                     00006007
+//*            USED WHEN CLONING THIS REPO WITH ZIGI                    00007007
+//*****************************************************                 00008007
+//COMPLINK  EXEC IGYWCL                                                 00010000
+//COBOL.SYSIN DD DSN=IBMUSER.RACHK.SRCE(ONE),                           00020006
+//             DISP=SHR                                                 00030001
+//*                                                                     00040000
+//LKED.SYSLIB  DD                                                       00041004
+//             DD                                                       00042004
+//             DD DSN=IBMUSER.RACHK.LOAD,DISP=SHR                       00043006
+//LKED.SYSLMOD DD DSN=IBMUSER.RACHK.LOAD(ONE),                          00050006
+//             DISP=OLD                                                 00060001

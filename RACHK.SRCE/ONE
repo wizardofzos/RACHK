@@ -1,0 +1,37 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ONE.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+
+       01  TITLE1.
+         05 T1 PIC X(80) value 'Testing RACROUTE via COBOL'.
+       01  TITLE2.
+         05 T3 PIC X(23) value 'RACF resource profile: '.
+
+       01  RACHK-COMMAREA.
+           05 RACHK-RETURNCODE      PIC S9(8) USAGE IS BINARY.
+           05 RACHK-RACFPLEN        PIC S9(8) USAGE IS BINARY.
+           05 RACHK-RACFPROF        PIC X(255).
+
+
+
+       01  RESULT.
+         05 R1 PIC X(17) value 'Result from call:'.
+
+
+
+       PROCEDURE DIVISION.
+           move 'SOME.EJBROLE.profile' to RACHK-RACFPROF
+           move 20 to RACHK-RACFPLEN
+           DISPLAY TITLE1
+           DISPLAY TITLE2 RACHK-RACFPROF
+           move 0 to RACHK-RETURNCODE
+           call 'RACHK' using RACHK-COMMAREA
+           DISPLAY RESULT RACHK-RETURNCODE
+           IF RACHK-RETURNCODE = 0 THEN
+           display 'User can access the resource'
+           ELSE
+           display 'User cannot access the resource'
+           END-IF
+           GOBACK.

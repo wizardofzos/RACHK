@@ -1,0 +1,17 @@
+//IBMUSERA JOB 999TCD0,                                                 00001006
+//             'RUN IT',                                                00002006
+//             NOTIFY=&SYSUID,CLASS=A,                                  00003006
+//             MSGLEVEL=(1,1)                                           00004001
+//*****************************************************                 00004108
+//*            CHANGE <IBMUSER> INTO THE PREFIX YOU                     00004208
+//*            USED WHEN CLONING THIS REPO WITH ZIGI                    00004308
+//*****************************************************                 00004408
+//GO      EXEC PGM=ONE                                                  00005002
+//*                                                                     00006000
+//STEPLIB   DD DSN=IBMUSER.RACHK.LOAD,                                  00006107
+//             DISP=SHR                                                 00007001
+//*                                                                     00008000
+//SYSPRINT  DD SYSOUT=*                                                 00009001
+//SYSOUT    DD SYSOUT=*                                                 00009105
+//SYSMDUMP  DD SYSOUT=*                                                 00010003
+//SYSUDUMP  DD SYSOUT=*                                                 00020003
