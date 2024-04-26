@@ -14,12 +14,12 @@ working.
 # Workings
 
 ```
- +-----------------------+                                                   
- |01  RACHK-COMMAREA.    |                                                   
- |    05 RACHK-RETURNCODE<----------------RETURN CODE FROM RACROUTE-------+  
- |    05 RACHK-RACFPLEN. |                                                |  
- |    05 RACHK-RACFPROF. |                                                |  
- +-----------------------+                                                |  
+ +---------------------------------------------------+                                                   
+ |01  RACHK-COMMAREA.                                |                                                   
+ |    05 RACHK-RETURNCODE  PIC S9(8) USAGE IS BINARY.<-----RACROUTE RC----+  
+ |    05 RACHK-RACFPLEN.   PIC S9(8) USAGE IS BINARY.|                    |  
+ |    05 RACHK-RACFPROF.   PIC X(255)                |                    |
+ +---------------------------------------------------+                    |  
                                                                           |  
  +--------------------------------------------------+                     |  
  |move 'Test.Read.On.This.EJBROLE' to RACHK-RACFPROF|                     |  
